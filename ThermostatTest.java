@@ -32,5 +32,25 @@ public class ThermostatTest {
 		Thermostat.up();
 		assertTrue("wrong change", Thermostat.temp.equals("High"));
 	}
-
+	@Test
+	public void camino1test(){
+		//empiezo Wake/Low
+		Thermostat.up();
+		Thermostat.advance();
+		Thermostat.down();
+		assertEquals("Sleep Low", Thermostat.partOfDay + " " + Thermostat.temp);
+	}
+	
+	@Test
+	public void camino2test(){
+		Thermostat.partOfDay = "Sleep";
+		Thermostat.temp = "Low";
+		
+		Thermostat.up();
+		Thermostat.advance();
+		Thermostat.down();
+		assertEquals("Wake Low", Thermostat.partOfDay + " " + Thermostat.temp);
+		
+	}
+	
 }
